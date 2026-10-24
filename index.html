@@ -3,26 +3,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#080d19" />
-  <title>Monkey Jungle Run — Alien Edition</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <meta name="theme-color" content="#080e1d" />
+
+  <title>Monkey Jungle Run | Alien Edition</title>
+
+  <meta
+    name="description"
+    content="Run through a moonlit alien jungle city, dodge dangerous obstacles, and collect glowing bananas."
+  />
+
+  <link
+    rel="canonical"
+    href="https://ttraykov.github.io/MonkeyJungleRun/"
+  />
 </head>
+
 <body>
+
+  <script>
+    const url = new URL(window.location.href);
+
+    if (url.searchParams.has('utm_source')) {
+      url.searchParams.delete('utm_source');
+      window.history.replaceState(
+        null,
+        '',
+        url.pathname + url.search + url.hash
+      );
+    }
+  </script>
+
   <main class="page">
     <header class="game-header">
       <h1>MONKEY JUNGLE RUN</h1>
-      <p>ALIEN EDITION · ESCAPE THE SHADOW CITY</p>
+      <p>Alien Edition · Escape the Shadow City</p>
     </header>
 
-    <div id="game"></div>
+    <section class="game-shell" aria-label="Monkey Jungle Run game">
+      <div id="game"></div>
+    </section>
 
-    <div class="instructions">
-      <strong>SPACE</strong> or <strong>↑</strong> to jump
-      <span> · </span>
-      Tap the game on mobile
-      <span> · </span>
-      Collect glowing bananas
-    </div>
+    <footer class="game-footer">
+      <p class="instructions">
+        Press <strong>SPACE</strong> or <strong>↑</strong> to jump
+        · Tap the game on mobile
+        · Collect glowing bananas
+      </p>
+
+      <p class="footer-caption">
+        Survive the shadow city
+      </p>
+    </footer>
   </main>
 
   <script type="module" src="/src/main.js"></script>

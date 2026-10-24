@@ -1,21 +1,238 @@
-* { box-sizing: border-box; }
+
+:root {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #eee5d8;
+  background: #070b14;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: #070b14;
+}
+
 body {
+  position: relative;
+  isolation: isolate;
   margin: 0;
   min-height: 100vh;
-  font-family: Georgia, 'Times New Roman', serif;
-  color: #f2e4d1;
+  overflow-x: hidden;
+  color: #eee5d8;
   text-align: center;
-  background: radial-gradient(ellipse at 50% 10%, #29384d 0%, #10192b 48%, #080d17 100%);
+  background:
+    radial-gradient(
+      ellipse 360px 360px at 78% 17%,
+      rgba(181, 204, 227, 0.18),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 65% 35% at 50% 78%,
+      rgba(187, 106, 63, 0.14),
+      transparent 85%
+    ),
+    linear-gradient(
+      180deg,
+      #111d31 0%,
+      #0c1526 35%,
+      #151829 70%,
+      #070b14 100%
+    );
 }
-.page { max-width: 1100px; margin: 0 auto; padding: 26px 16px 36px; }
-.game-header h1 { font-size: clamp(30px, 5vw, 51px); margin: 0 0 8px; letter-spacing: .035em; text-shadow: 0 3px 18px #000; }
-.game-header p { font-size: 17px; color: #b5bdd1; margin: 0 0 22px; }
+
+/* Distant moon */
+body::before {
+  content: '';
+  position: fixed;
+  z-index: -2;
+  width: 310px;
+  height: 310px;
+  top: 5%;
+  right: 9%;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      rgba(246, 246, 244, 0.9),
+      rgba(159, 182, 205, 0.75) 55%,
+      rgba(90, 121, 157, 0.35) 75%,
+      transparent 76%
+    );
+  box-shadow:
+    0 0 80px rgba(137, 174, 212, 0.15),
+    0 0 170px rgba(103, 143, 190, 0.1);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Atmospheric gothic skyline */
+body::after {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  inset: auto 0 0;
+  height: 55vh;
+  pointer-events: none;
+  opacity: 0.75;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 50px,
+      rgba(226, 151, 87, 0.19) 51px 53px,
+      transparent 54px 90px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 82px,
+      #121a29 82px 127px,
+      transparent 127px 158px,
+      #101827 158px 225px
+    ),
+    linear-gradient(
+      to top,
+      #080c15 0%,
+      #121b2b 55%,
+      transparent 100%
+    );
+  -webkit-mask-image:
+    linear-gradient(to top, black 0%, black 55%, transparent 100%);
+  mask-image:
+    linear-gradient(to top, black 0%, black 55%, transparent 100%);
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 34px 22px 55px;
+}
+
+.game-header {
+  margin-bottom: 27px;
+}
+
+.game-header h1 {
+  margin: 0;
+  font-size: clamp(36px, 6vw, 76px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.045em;
+  color: #f1e2ca;
+  text-shadow:
+    0 3px 0 #44392f,
+    0 8px 24px rgba(0, 0, 0, 0.7),
+    0 0 55px rgba(233, 172, 102, 0.12);
+}
+
+.game-header p {
+  margin: 12px 0 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: clamp(10px, 1.2vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: #c8ad8b;
+  text-transform: uppercase;
+}
+
+.game-shell {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 7px;
+  border: 1px solid #576477;
+  border-radius: 15px;
+  background: linear-gradient(
+    135deg,
+    #303e51,
+    #0a111f 40%,
+    #3c4655
+  );
+  box-shadow:
+    0 25px 75px rgba(0, 0, 0, 0.65),
+    0 0 65px rgba(68, 111, 159, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
 #game {
-  width: 100%; max-width: 900px; margin: 0 auto; overflow: hidden;
-  border: 3px solid #536079; border-radius: 12px;
-  box-shadow: 0 20px 55px #0009, 0 0 40px #6585a322;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #080e1d;
   touch-action: manipulation;
 }
-#game canvas { display: block; width: 100%; height: auto; margin: 0 auto; }
-.instructions { margin-top: 18px; font-size: 15px; color: #aeb8c9; }
-.instructions strong { color: #ffd59c; }
+
+#game canvas {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.game-footer {
+  max-width: 1100px;
+  margin: 22px auto 0;
+  padding: 20px 22px;
+  border: 1px solid rgba(150, 165, 186, 0.2);
+  border-radius: 12px;
+  background: rgba(7, 12, 22, 0.68);
+  backdrop-filter: blur(12px);
+}
+
+.instructions {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #b8c5d7;
+}
+
+.instructions strong {
+  color: #ffd18c;
+}
+
+.footer-caption {
+  margin: 10px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.17em;
+  color: #8e9db1;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 22px 10px 35px;
+  }
+
+  .game-header {
+    margin-bottom: 18px;
+  }
+
+  .game-header p {
+    letter-spacing: 0.13em;
+  }
+
+  .game-shell {
+    padding: 4px;
+    border-radius: 10px;
+  }
+
+  .game-footer {
+    margin-top: 14px;
+    padding: 15px 12px;
+  }
+
+  .instructions {
+    font-size: 12px;
+  }
+
+  body::before {
+    width: 170px;
+    height: 170px;
+    right: 2%;
+  }
+}
